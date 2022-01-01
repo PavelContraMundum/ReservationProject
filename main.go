@@ -7,6 +7,7 @@ func main() {
 	// lze zapsat i takto: conferenceName := "Go Conference" Takto nelze deklarovat konstanty, nelze také specificky deklarovat datový typ
 	const conferenceTickets int = 50
 	var remainingTickets uint = 50 // uint nemůže být záporné číslo
+	var bookings [50]string
 
 	fmt.Printf("Welcome to %v booking application\n", conferenceName)
 	fmt.Printf("We have total of %v tickets and %v are still available\n", conferenceTickets, remainingTickets)
@@ -29,6 +30,12 @@ func main() {
 	fmt.Scan(&userTickets)
 
 	remainingTickets = remainingTickets - userTickets
+	bookings[0] = firstName + " " + lastName
+
+	fmt.Printf("The whole array: %v\n", bookings)
+	fmt.Printf("The first value: %v\n", bookings[0])
+	fmt.Printf("Array type: %T\n", bookings)
+	fmt.Printf("Array length: %v\n", len(bookings))
 
 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
 	fmt.Printf("%v tickets remaing for %v\n", remainingTickets, conferenceName)
