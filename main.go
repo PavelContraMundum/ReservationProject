@@ -71,8 +71,6 @@ func main() {
 			if !isValidTicketNumber {
 				fmt.Println("Number of tickets is invalid.")
 			}
-
 		}
-
 	}
 }
