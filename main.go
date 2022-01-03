@@ -12,9 +12,7 @@ func main() {
 	var remainingTickets uint = 50 // uint nemůže být záporné číslo
 	var bookings []string
 
-	fmt.Printf("Welcome to %v booking application\n", conferenceName)
-	fmt.Printf("We have total of %v tickets and %v are still available\n", conferenceTickets, remainingTickets)
-	fmt.Println("Get your tickets here to attend")
+	greetUsers(conferenceName, conferenceTickets, remainingTickets)
 
 	for {
 		var firstName string
@@ -46,13 +44,7 @@ func main() {
 			fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
 			fmt.Printf("%v tickets remaing for %v\n", remainingTickets, conferenceName)
 
-			firstNames := []string{}
-			for _, booking := range bookings {
-				var names = strings.Fields(booking)
-				firstNames = append(firstNames, names[0])
-			}
-
-			fmt.Printf("The first names of bookings are: %v\n", firstNames)
+			printFirstNames(bookings)
 
 			if remainingTickets == 0 {
 				// ukončit program
@@ -74,21 +66,21 @@ func main() {
 		}
 	}
 
-	city := "London"
+}
 
-	switch city {
-	case "New York":
-		//execute code for booking New York conference tickets
-	case "Singapore":
-		//execute code for booking Singapore conference tickets
-	case "London", "Berlin":
-		//execute code for booking London & Berlin conference tickets
-	case "Mexico City":
-		//execute code for booking Mex conference tickets
-	case "Hong Kong":
-		//execute code for booking Hong conference tickets
-	default:
-		fmt.Print("No valid city selected")
+func greetUsers(confName string, confTickets int, remainingTickets uint) {
+	fmt.Printf("Welcome to %v booking application. ", confName)
+	fmt.Printf("We have total of %v tickets and %v are still available\n", confTickets, remainingTickets)
+	fmt.Println("Get your tickets here to attend")
+
+}
+
+func printFirstNames(bookings []string) {
+	firstNames := []string{}
+	for _, booking := range bookings {
+		var names = strings.Fields(booking)
+		firstNames = append(firstNames, names[0])
 	}
 
+	fmt.Printf("The first names of bookings are: %v\n", firstNames)
 }
